@@ -9,7 +9,7 @@
               h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '50px' : '70px'}") Kitty Impsum!
               br
               br
-              p Generate lorem ipsum made with meows from different languages.
+              p Lorem ipsum for cats. Generate lorem ipsum from "meow" in different languages.
           v-layout(v-bind="$binding" justify-center)
             v-flex(xs12 md6).pa-2
               v-select(v-model="type" :items="types" label="Type" outline)
