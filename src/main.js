@@ -5,6 +5,11 @@ import './vuetify';
 import './mixins';
 import app from './app';
 import router from './router';
+import VueClipboard from 'vue-clipboard2';
+import SocialSharing from 'vue-social-sharing';
+
+Vue.use(VueClipboard);
+Vue.use(SocialSharing);
 
 Vue.config.productionTip = false;
 
