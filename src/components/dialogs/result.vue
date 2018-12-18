@@ -3,6 +3,7 @@
     v-card(style="border-radius: 10px;")
       v-card-text.text-xs-center
         h1 Result!
+        br
         v-textarea(
           v-model="result"
           outline
@@ -10,7 +11,14 @@
           height="300"
           onclick="this.focus();this.select()"
         )
-        v-btn(large round color="primary" @click="copy") Copy
+        v-btn(
+          v-clipboard:copy="result"
+          v-clipboard:success="onCopy"
+          large 
+          round 
+          color="primary" 
+        ) 
+          strong Copy to clipboard
     
 </template>
 
@@ -26,7 +34,9 @@
       }
     },
     methods: {
-      copy() {
+      onCopy() {
+        console.log('Copied!');
+        this.$emit('copied', true);
         this.dialog2 = false;
       }
     },
