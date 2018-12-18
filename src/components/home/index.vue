@@ -6,7 +6,7 @@
           v-layout(row justify-center)
             v-flex(xs12 md12).text-xs-center
               h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '30px' : '40px'}").mb-2 Welcome To
-              h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '50px' : '70px'}") Kitty Impsum!
+              h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '50px' : '70px'}") Kitty Ipsum!
               br
               br
               p Generate lorem ipsum composed of "meow" in different hooman languages.
