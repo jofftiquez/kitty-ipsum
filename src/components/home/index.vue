@@ -1,5 +1,11 @@
 <template lang="pug">
   v-content
+    v-toolbar(flat fixed)
+      h1 Sentences - 
+        span.primary--text {{totalSentences}}
+      h1.mx-3 •
+      h1 Paragraphs - 
+        span.primary--text {{totalParagraphs}}
     v-container(fluid fill-height)
       v-layout(row align-center justify-center)
         v-flex(xs12 md6)
@@ -81,6 +87,7 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex';
   import areYouACat from '@/components/dialogs/are-you-a-cat';
   import result from '@/components/dialogs/result';
   import error from '@/components/dialogs/error';
@@ -93,6 +100,7 @@
       error
     },
     created() {
+      this.watchCount();
       const isCat = localStorage.getItem('isCat');
       if(isCat !== 'yes') {
         this.areYouACatDialog = true;
@@ -112,8 +120,18 @@
         result: '',
       }
     },
+    computed: {
+      ...mapGetters({
+        totalParagraphs: 'counter/totalParagraphs',
+        totalSentences: 'counter/totalSentences'
+      })
+    },
     methods: {
-      generate() {
+      ...mapActions({
+        watchCount: 'counter/watchCount',
+        increment: 'counter/increment'
+      }),
+      async generate() {
         
         if(!parseInt(this.count)) {
           this.errorMessage = `Invalid ${this.type} Count. Must be 1 to 99`;
@@ -126,7 +144,6 @@
 
         for (let a = 0; a < this.count; a++) {
           if(this.type === 'Sentence') {
-            // generate n sentence
             sentences.push(this.generateSentence());
           }
           
@@ -142,6 +159,8 @@
         if(this.type === 'Paragraph') {
           this.result = paragraphs.join('\n\n');
         }
+
+        await this.increment({type: this.type, count: this.count});
 
         this.resultDialog = true;
       },
