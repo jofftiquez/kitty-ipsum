@@ -14,7 +14,7 @@
             v-flex(xs12 md6).pa-2
               v-select(v-model="type" :items="types" label="Type" outline)
             v-flex(xs12 md6).pa-2
-              v-text-field(v-model="count" mask="##" :label="type === 'Sentence' ? 'Number of sentences' : 'Number of paragraph'" outline)
+              v-text-field(v-model="count" mask="##" :label="type === 'Sentence' ? 'Number of sentences' : 'Number of paragraphs'" outline)
           v-layout(row justify-center).text-xs-center
             v-flex(xs12 md6)
               v-btn(large round color="primary" @click="generate")
