@@ -8,7 +8,8 @@
           label="Meow!"
           color="primary"
         )
-        v-btn(@click="proceed" large round color="primary" v-if="isCat") Proceed
+        v-btn(@click="proceed" large round color="primary" v-if="isCat") 
+          strong Meow!
     
 </template>
 
