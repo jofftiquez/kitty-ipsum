@@ -17,7 +17,8 @@ export default {
     color: #2c3e50;
   }
 
-  h1 {
+  h1, h2 {
     font-family: 'Pacifico', cursive;
+    color: #2c3e50;
   }
 </style>
