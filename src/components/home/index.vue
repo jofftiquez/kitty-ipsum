@@ -1,6 +1,6 @@
 <template lang="pug">
   v-content
-    v-toolbar(flat fixed)
+    v-toolbar(flat fixed color="white")
       h1 Sentences - 
         span.primary--text {{totalSentences}}
       h1.mx-3 •
@@ -26,38 +26,16 @@
               v-btn(large round color="primary" @click="generate")
                 strong Generate Meow!
     
-    v-dialog(width="300")
-      v-btn(
-        dark
-        fab
-        fixed
-        bottom
-        right
-        style="z-index: 9999999"
-        slot="activator"
-      ).share-fab.primary
-        v-icon share
-      v-card
-        v-card-text.text-xs-center
-          h1 Share!
-          social-sharing(url="https://kitty-ipsum.firebaseapp.com" inline-template)
-            div
-              network(network="facebook")
-                v-btn(block dark style="background-color:#3b5998") Facebook
-              network(network="googleplus")
-                v-btn(block dark style="background-color:#d34836") Google +
-              network(network="twitter")
-                v-btn(block dark style="background-color:#00aced") Twitter
-              network(network="pinterest")
-                v-btn(block dark style="background-color:rgb(189, 8, 28)") Pinterest
-              network(network="linkedin")
-                v-btn(block dark style="background-color:#0077b5") LinkedIn
-              network(network="reddit")
-                v-btn(block dark style="background-color:orangered") Reddit
-              network(network="vk")
-                v-btn(block dark style="background-color:#507299") VKontakte
-              network(network="whatsapp")
-                v-btn(block dark style="background-color:#1ebea5") Whatsapp
+    v-btn(
+      dark
+      fab
+      fixed
+      bottom
+      right
+      style="z-index: 9999999"
+      @click="shareDialog = true"
+    ).share-fab.primary
+      v-icon share
     
     are-you-a-cat(
       :dialog="areYouACatDialog"
@@ -77,6 +55,11 @@
       :errorMessage="errorMessage"
       @close="v => errorDialog = v"
     )
+    
+    share(
+      :dialog="shareDialog"
+      @close="v => shareDialog = v"
+    )
 
     v-snackbar(
       v-model="showSnack"
@@ -91,13 +74,15 @@
   import areYouACat from '@/components/dialogs/are-you-a-cat';
   import result from '@/components/dialogs/result';
   import error from '@/components/dialogs/error';
+  import share from '@/components/dialogs/share';
   import meows from '@/assets/meow.json';
 
   export default {
     components: {
       areYouACat,
       result,
-      error
+      error,
+      share
     },
     created() {
       this.watchCount();
@@ -114,6 +99,7 @@
         areYouACatDialog: false,
         resultDialog: false,
         errorDialog: false,
+        shareDialog: false,
         showSnack: false,
         snackMessage: '',
         errorMessage: '',
