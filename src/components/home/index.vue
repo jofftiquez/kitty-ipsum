@@ -161,7 +161,7 @@
           words.push(meows[index]);
         }
 
-        return words.join(' ');
+        return this.$morphCapitalize(words.join(' '));
       },
       generateParagraph() {
         const min = 3;
