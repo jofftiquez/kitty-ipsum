@@ -9,7 +9,9 @@ import router from './router';
 import store from './vuex';
 import VueClipboard from 'vue-clipboard2';
 import SocialSharing from 'vue-social-sharing';
+import { morphCapitalize } from 'vue-morphling';
 
+Vue.use(morphCapitalize);
 Vue.use(VueClipboard);
 Vue.use(SocialSharing);
 
