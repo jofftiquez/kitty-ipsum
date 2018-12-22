@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "firebase": "^5.7.0",
+    "prerender-spa-plugin": "^3.4.0",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.2.1",
     "vue-morphling": "^0.8.5",
