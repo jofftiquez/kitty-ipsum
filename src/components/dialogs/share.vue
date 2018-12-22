@@ -3,7 +3,7 @@
     v-card
       v-card-text.text-xs-center
         h1 Share!
-        social-sharing(url="https://kitty-ipsum.firebaseapp.com" inline-template)
+        social-sharing(url="https://kitty-ipsum.com" inline-template)
           div
             network(network="facebook")
               v-btn(block dark style="background-color:#3b5998") Facebook
