@@ -1,18 +1,22 @@
 <template lang="pug">
   v-content
     v-toolbar(flat fixed color="white")
-      h1 Sentences - 
-        span.primary--text {{totalSentences}}
+      v-tooltip(bottom)
+        h2(slot="activator") Sentences - 
+          span.primary--text {{totalSentences}}
+        | Sentences generated so far
       h1.mx-3 •
-      h1 Paragraphs - 
-        span.primary--text {{totalParagraphs}}
+      v-tooltip(bottom)
+        h2(slot="activator") Paragraphs - 
+          span.primary--text {{totalParagraphs}}
+        | Paragraphs generated so far
     v-container(fluid fill-height)
       v-layout(row align-center justify-center)
         v-flex(xs12 md6)
           v-layout(row justify-center)
             v-flex(xs12 md12).text-xs-center
-              h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '30px' : '40px'}").mb-2 Welcome To
-              h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '50px' : '70px'}") Kitty Ipsum!
+              h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '30px' : '35px'}").mb-2 Welcome To
+              h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '50px' : '60px'}") Kitty Ipsum!
               br
               br
               p Generate lorem ipsum composed of "meow" in different hooman languages.
@@ -25,9 +29,19 @@
             v-flex(xs12 md6)
               v-btn(large round color="primary" @click="generate")
                 strong Generate Meow!
-      v-layout
-        v-flex(xs12 md12)
-          h1 Foo
+     
+          v-flex(xs12 md12).text-xs-center
+            br
+            h2.mb-3 Sponsored by:
+            center
+              v-card(hover height="200" width="300")
+                v-card-text
+                  br
+                  br
+                  h2 Your logo here 😊
+                  br
+                  span Email me at 
+                    code jofftiquez@gmail.com
     
     v-btn(
       dark
