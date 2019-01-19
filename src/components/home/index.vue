@@ -25,6 +25,9 @@
             v-flex(xs12 md6)
               v-btn(large round color="primary" @click="generate")
                 strong Generate Meow!
+      v-layout
+        v-flex(xs12 md12)
+          h1 Foo
     
     v-btn(
       dark
