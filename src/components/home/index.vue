@@ -2,16 +2,16 @@
   v-content
     v-toolbar(flat fixed color="white")
       v-tooltip(bottom)
-        h2(slot="activator") Sentences - 
-          span.primary--text {{totalSentences}}
-        | Sentences generated so far
+        h2(slot="activator")
+          span.primary--text {{totalSentences}} 
+          | sentences
       h1.mx-3 •
       v-tooltip(bottom)
-        h2(slot="activator") Paragraphs - 
-          span.primary--text {{totalParagraphs}}
-        | Paragraphs generated so far
+        h2(slot="activator")
+          span.primary--text {{totalParagraphs}} 
+          | paragraphs
     v-container(fluid fill-height)
-      v-layout(row align-center justify-center)
+      v-layout(row justify-center)
         v-flex(xs12 md6)
           v-layout(row justify-center)
             v-flex(xs12 md12).text-xs-center
