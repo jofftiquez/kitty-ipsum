@@ -1,15 +1,18 @@
 <template lang="pug">
   v-content
-    //- v-toolbar(flat fixed color="white")
-      v-tooltip(bottom)
-        h2(slot="activator")
-          span.primary--text {{totalSentences}} 
-          | sentences
-      h1.mx-3 •
-      v-tooltip(bottom)
-        h2(slot="activator")
-          span.primary--text {{totalParagraphs}} 
-          | paragraphs
+    v-toolbar(flat fixed color="white")
+      //- v-tooltip(bottom)
+      //-   h2(slot="activator")
+      //-     span.primary--text {{totalSentences}} 
+      //-     | sentences
+      //- h1.mx-3 •
+      //- v-tooltip(bottom)
+      //-   h2(slot="activator")
+      //-     span.primary--text {{totalParagraphs}} 
+      //-     | paragraphs
+      v-spacer
+      v-btn(large icon href="https://twitter.com/jrtiquez")
+        img(width="100%" src="../../assets/images/twitter.png")
     v-container(fluid fill-height)
       v-layout(row justify-center align-center)
         v-flex(xs12 md6)
@@ -18,7 +21,7 @@
               h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '30px' : '35px'}").mb-2 Welcome To
               h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '50px' : '60px'}") Kitty Ipsum!
               br
-              p Generate lorem ipsum composed of "meow" in different hooman languages.
+              p Lorem ipsum but using "meow" in different hooman languages.
           v-layout(row justify-center)
             v-flex(xs12 md6).text-xs-center
               count-up(
