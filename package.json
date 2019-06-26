@@ -11,10 +11,13 @@
     "postbuild": "cp ./robots.txt ./dist && cp ./sitemap.xml ./dist"
   },
   "dependencies": {
+    "countup.js": "^2.0.4",
     "firebase": "^5.7.0",
+    "js-yaml": "^3.13.1",
     "prerender-spa-plugin": "^3.4.0",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.2.1",
+    "vue-countup-v2": "^4.0.0",
     "vue-morphling": "^0.8.5",
     "vue-router": "^3.0.1",
     "vue-social-sharing": "^2.3.3",
@@ -58,7 +61,7 @@
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
-    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
