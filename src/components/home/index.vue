@@ -1,6 +1,6 @@
 <template lang="pug">
   v-content
-    v-toolbar(flat fixed color="white")
+    //- v-toolbar(flat fixed color="white")
       v-tooltip(bottom)
         h2(slot="activator")
           span.primary--text {{totalSentences}} 
@@ -11,15 +11,29 @@
           span.primary--text {{totalParagraphs}} 
           | paragraphs
     v-container(fluid fill-height)
-      v-layout(row justify-center)
+      v-layout(row justify-center align-center)
         v-flex(xs12 md6)
           v-layout(row justify-center)
             v-flex(xs12 md12).text-xs-center
               h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '30px' : '35px'}").mb-2 Welcome To
               h1(:style="{'line-height': 1.2, 'font-size': $isMobile ? '50px' : '60px'}") Kitty Ipsum!
               br
-              br
               p Generate lorem ipsum composed of "meow" in different hooman languages.
+          v-layout(row justify-center)
+            v-flex(xs12 md6).text-xs-center
+              count-up(
+                :delay="delay"
+                :endVal="totalSentences"
+                :options="options"
+              ).count-up.primary--text
+              h2 Sentences
+            v-flex(xs12 md6).text-xs-center
+              count-up(
+                :delay="delay"
+                :endVal="totalParagraphs"
+                :options="options"
+              ).count-up.primary--text
+              h2 Paragraph
           v-layout(v-bind="$binding" justify-center)
             v-flex(xs12 md6).pa-2
               v-select(v-model="type" :items="types" label="Type" outline)
@@ -30,7 +44,7 @@
               v-btn(large round color="primary" @click="generate")
                 strong Generate Meow!
      
-          v-flex(xs12 md12).text-xs-center
+          //- v-flex(xs12 md12).text-xs-center
             br
             h2.mb-3 Sponsored by:
             center
@@ -42,7 +56,6 @@
                   br
                   span Email me at 
                     code jofftiquez@gmail.com
-    
     v-btn(
       dark
       fab
@@ -93,13 +106,15 @@
   import error from '@/components/dialogs/error';
   import share from '@/components/dialogs/share';
   import meows from '@/assets/meow.json';
+  import countUp from 'vue-countup-v2';
 
   export default {
     components: {
       areYouACat,
       result,
       error,
-      share
+      share,
+      countUp
     },
     created() {
       this.watchCount();
@@ -121,6 +136,15 @@
         snackMessage: '',
         errorMessage: '',
         result: '',
+        delay: 1000,
+        options: {
+          useEasing: true,
+          useGrouping: true,
+          separator: ',',
+          decimal: '.',
+          prefix: '',
+          suffix: ''
+        }
       }
     },
     computed: {
@@ -134,7 +158,7 @@
         watchCount: 'counter/watchCount',
         increment: 'counter/increment'
       }),
-      async generate() {
+      async generate () {
         
         if(!parseInt(this.count)) {
           this.errorMessage = `Invalid ${this.type} Count. Must be 1 to 99`;
@@ -167,7 +191,7 @@
 
         this.resultDialog = true;
       },
-      generateSentence() {
+      generateSentence () {
         const min = 3;
         const max = 10;
         const length = Math.floor(Math.random() * (max - min + 1) + min);
@@ -180,7 +204,7 @@
 
         return this.$morphCapitalize(words.join(' '));
       },
-      generateParagraph() {
+      generateParagraph () {
         const min = 3;
         const max = 10;
         const length = Math.floor(Math.random() * (max - min + 1) + min);
@@ -192,10 +216,22 @@
 
         return sentences.join('. ') + '.';
       },
-      showSnackbar(message) {
+      showSnackbar (message) {
         this.snackMessage = message;
         this.showSnack = true;
+      },
+      onReady (instance, CountUp) {
+        const that = this;
+        instance.update(that.endVal + 100);
       }
     }
   }
 </script>
+
+<style scoped>
+  .count-up {
+    font-size: 60px;
+    font-family: 'Pacifico', cursive;
+    color: #2c3e50;
+  }
+</style>
